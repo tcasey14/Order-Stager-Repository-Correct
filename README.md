@@ -10,4 +10,4 @@ Enter your weight and height and get your BMI and weight group.
 
 ## License
 
-Copyright &copy; PyBMI 2012.
+Copyright &copy; Dejan Josifović 2012.
