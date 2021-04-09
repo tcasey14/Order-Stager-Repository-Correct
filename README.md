@@ -1,4 +1,4 @@
-# PyBMI
+# Order Stager Repository
 
 This is a simple body mass index measurer written in Python.
 Enter your weight and height and get your BMI and weight group.
