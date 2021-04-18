@@ -12,19 +12,25 @@ b = IntVar(None)
 # Also checks if entered value for height is not zero
 def stage_product():
     try:
-        re = float(mass.get()) / (float(height.get()) * float(height.get()))
+        re = float(mass.get()) + (float(height.get()))
         b.set(re)
     except ZeroDivisionError:
         ma.set(None)
         he.set(None)
         b.set(None)
         return
-    if re < 50:
-        resLabelText.set("Stage product at Service Desk (SD-001-050)")
-    if 50 < re < 150:
-        resLabelText.set("Stage product at Pro Desk (PD-001-050")
-    if re > 150:
-        resLabelText.set("Stage product along Back Wall or outside (BW-001 or X1-001)")
+    if re < 25:
+        resLabelText.set("Stage product at Service Desk (SD-001-SD-010")
+    if 25 < re < 50:
+        resLabelText.set("Stage product at Service Desk (SD-011-SD-020")
+    if 50 < re < 100:
+        resLabelText.set("Stage product at Service Desk (SD-021-SD-030")
+    if 100 < re < 125:
+        resLabelText.set("Stage product at Pro Desk (PD-001-PD-020")
+    if 125 < re < 200:
+        resLabelText.set("Stage product at Pro Desk (PD-021-PD-040)")
+    if 200 < re:
+        resLabelText.set("Stage product at Back Wall (X1-001-100")
     return
 
 
@@ -34,7 +40,7 @@ app.title("Online Order Stager")
 
 # Label and text box for mass
 mLabelText = StringVar()
-mLabelText.set("Enter the merchandise weight in LB.: ")
+mLabelText.set("Enter the merchandise height in FT.: ")
 massLabel = Label(app, textvariable=mLabelText)
 massLabel.pack()
 
@@ -64,6 +70,7 @@ resLabelText = StringVar()
 resLabelText.set("Stage the merchandise in:")
 resLabel = Label(app, textvariable=resLabelText)
 resLabel.pack()
+
 
 # Starts the GUI
 app.mainloop()
