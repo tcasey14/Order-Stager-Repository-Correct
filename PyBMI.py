@@ -20,17 +20,17 @@ def stage_product():
         b.set(None)
         return
     if re < 25:
-        resLabelText.set("Stage product at Service Desk (SD-001-SD-010")
+        resLabelText.set("Stage product at Service Desk (SD-001-SD-010)")
     if 25 < re < 50:
-        resLabelText.set("Stage product at Service Desk (SD-011-SD-020")
+        resLabelText.set("Stage product at Service Desk (SD-011-SD-020)")
     if 50 < re < 100:
-        resLabelText.set("Stage product at Service Desk (SD-021-SD-030")
+        resLabelText.set("Stage product at Service Desk (SD-021-SD-030)")
     if 100 < re < 125:
-        resLabelText.set("Stage product at Pro Desk (PD-001-PD-020")
+        resLabelText.set("Stage product at Pro Desk (PD-001-PD-020)")
     if 125 < re < 200:
         resLabelText.set("Stage product at Pro Desk (PD-021-PD-040)")
     if 200 < re:
-        resLabelText.set("Stage product at Back Wall (X1-001-100")
+        resLabelText.set("Stage product at Back Wall (X1-001-100)")
     return
 
 
@@ -40,7 +40,7 @@ app.title("Online Order Stager")
 
 # Label and text box for mass
 mLabelText = StringVar()
-mLabelText.set("Enter the merchandise height in FT.: ")
+mLabelText.set("Enter the merchandise weight and height multiplied together in FT.: ")
 massLabel = Label(app, textvariable=mLabelText)
 massLabel.pack()
 
@@ -49,7 +49,7 @@ mass.pack()
 
 # Label and text box for height
 hLabelText = StringVar()
-hLabelText.set("Enter your merchandise width in  FT.: ")
+hLabelText.set("Enter your merchandise weight in  LB.: ")
 heightLabel = Label(app, textvariable=hLabelText)
 heightLabel.pack()
 
@@ -71,7 +71,16 @@ resLabelText.set("Stage the merchandise in:")
 resLabel = Label(app, textvariable=resLabelText)
 resLabel.pack()
 
-
+user_input=input("What location will the merchandise be staged in based on the app's prompt?(Also, type 'Too Small','Too Big', or nothing to get a different prompt.")
+if user_input == "":
+   print("Not a valid location, please enter the merchandise's measurements again")
+elif user_input == "Too Big":
+    print("Please stage somewhere on Back Wall")
+elif user_input == "Too Small":
+    print("Please stage somewhere at Service or Pro Desk")
+else:
+    print("Order is staged in ", user_input)
+    
 # Starts the GUI
 app.mainloop()
 
