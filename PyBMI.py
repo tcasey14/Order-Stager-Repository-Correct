@@ -74,13 +74,16 @@ resLabel = Label(app, textvariable=resLabelText)
 resLabel.pack()
 
 #User input to ensure product can be staged properly
-user_input=input("What location will the merchandise be staged in based on the app's prompt?(Also, type 'Too Small','Too Big', or nothing to get a different prompt.")
-if user_input == "":
+uLabelText = StringVar()
+uLabelText = input("What location will the merchandise be staged in based on the app's prompt?(Also, type 'Too Small','Too Big','not enough space in assigned space' or nothing to get a different prompt.")
+if uLabelText == "":
    print("Not a valid location, please enter the merchandise's measurements again")
-elif user_input == "Too Big":
+elif uLabelText == "Too Big":
     print("Please stage somewhere on Back Wall")
-elif user_input == "Too Small":
+elif uLabelText == "Too Small":
     print("Please stage somewhere at Service or Pro Desk")
+elif uLabelText == "not enough space in assigned space":
+    print("Try to stage in receiving or coordinate with management")
 else:
     print("Order is staged in ", user_input)
     
