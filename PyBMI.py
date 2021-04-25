@@ -33,6 +33,8 @@ def stage_product():
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
     if 150 < fe:
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
+    if fe > 150:
+        resLabelText.set("Stage product at Service Desk (SD-001-SD-030)")
     return
 
 
@@ -51,7 +53,7 @@ mass.pack()
 
 # Label and text box for weight of merchandise
 hLabelText = StringVar()
-hLabelText.set("Enter your merchandise weight in  LB.: ")
+hLabelText.set("Enter your merchandise weight in  LB. if over 150 pounds: ")
 heightLabel = Label(app, textvariable=hLabelText)
 heightLabel.pack()
 
@@ -85,7 +87,7 @@ elif uLabelText == "Too Small":
 elif uLabelText == "not enough space in assigned space":
     print("Try to stage in receiving or coordinate with management")
 else:
-    print("Order is staged in ", user_input)
+    print("Order is staged in ", uLabelText)
     
 # Starts the GUI
 app.mainloop()
