@@ -8,7 +8,7 @@ he = IntVar(None)
 b = IntVar(None)
 
 
-# Calculates the length times height and also weight with user-given data and puts merchandise in one of three staging locations
+# Calculates the length times height and also weight with user-given data and puts merchandise in one of three staging locations (for the measurements I used approximate values that I thought would make sense from my experiences at work. )
 def stage_product():
     try:
         re = float(mass.get()) 
@@ -33,7 +33,7 @@ def stage_product():
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
     if 150 < fe:
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
-    if fe > 150:
+    if fe < 150:
         resLabelText.set("Stage product at Service Desk (SD-001-SD-030)")
     return
 
@@ -44,7 +44,7 @@ app.title("Online Order Stager")
 
 # Label and text box for length times height of merchandise
 mLabelText = StringVar()
-mLabelText.set("Enter the merchandise length and height multiplied together in FT.: ")
+mLabelText.set("Enter the approximate merchandise length and height multiplied together in FT.: ")
 massLabel = Label(app, textvariable=mLabelText)
 massLabel.pack()
 
@@ -53,7 +53,7 @@ mass.pack()
 
 # Label and text box for weight of merchandise
 hLabelText = StringVar()
-hLabelText.set("Enter your merchandise weight in  LB. if over 150 pounds: ")
+hLabelText.set("Enter your approximate merchandise weight in  LB. if over 150 pounds: ")
 heightLabel = Label(app, textvariable=hLabelText)
 heightLabel.pack()
 
