@@ -6,7 +6,7 @@ app = Tk()
 ma = IntVar(None)
 he = IntVar(None)
 b = IntVar(None)
-
+us = StringVar(None)
 
 # Calculates the length times height and also weight with user-given data and puts merchandise in one of three staging locations (for the measurements I used approximate values that I thought would make sense from my experiences at work. )
 def stage_product():
@@ -14,11 +14,15 @@ def stage_product():
         re = float(mass.get()) 
         fe = float(height.get())
         b.set(re)
+        us = str(user.get())
+        
     except ZeroDivisionError:
         ma.set(None)
         he.set(None)
         b.set(None)
+        us.set(None)
         return
+        #if statements
     if re < 8:
         resLabelText.set("Stage product at Service Desk (SD-001-SD-010)")
     if 8 < re < 10:
@@ -33,18 +37,22 @@ def stage_product():
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
     if 150 < fe:
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
-    if fe < 150:
-        resLabelText.set("Stage product at Service Desk (SD-001-SD-030)")
+    if us == "Quit":
+        resLabelText.set("Not a valid location, please enter the merchandise's measurements again")
+    if us == "Too Big":
+        resLabelText.set("Please stage somewhere on Back Wall")
+    if us == "Too Small":
+        resLabelText.set("Please stage somewhere at Service or Pro Desk")
+    if us == "not enough space in assigned space":
+        resLabelText.set("Try to stage in receiving or coordinate with management")
     return
-
-
 # Sets size and title
 app.geometry("350x200+100+100")
-app.title("Online Order Stager")
+app.title("Home Depot Online Order Stager")
 
 # Label and text box for length times height of merchandise
 mLabelText = StringVar()
-mLabelText.set("Enter the approximate merchandise length and height multiplied together in FT.: ")
+mLabelText.set("Welcome to The Home Depot Online Order Stager! Enter the approximate merchandise length and height multiplied together in FT.: ")
 massLabel = Label(app, textvariable=mLabelText)
 massLabel.pack()
 
@@ -59,6 +67,14 @@ heightLabel.pack()
 
 height = Entry(app, textvariable=he)
 height.pack()
+#User input to ensure product can be staged properly
+uLabelText = StringVar()
+uLabelText.set("What location will the merchandise be staged in based on the app's prompt?(Also, type 'Too Small','Too Big','not enough space in assigned space' or 'quit' to get a different prompt.)")
+userLabel = Label(app, textvariable=uLabelText)
+userLabel.pack()
+
+user = Entry(app, textvariable=us)
+user.pack()
 
 # Buttons,labels,and textbox for Order Stager Function
 button = Button(app, text="Stage Product", command=stage_product)
@@ -75,20 +91,6 @@ resLabelText.set("Stage the merchandise in:")
 resLabel = Label(app, textvariable=resLabelText)
 resLabel.pack()
 
-#User input to ensure product can be staged properly
-uLabelText = StringVar()
-uLabelText = input("What location will the merchandise be staged in based on the app's prompt?(Also, type 'Too Small','Too Big','not enough space in assigned space' or nothing to get a different prompt.")
-if uLabelText == "":
-   print("Not a valid location, please enter the merchandise's measurements again")
-elif uLabelText == "Too Big":
-    print("Please stage somewhere on Back Wall")
-elif uLabelText == "Too Small":
-    print("Please stage somewhere at Service or Pro Desk")
-elif uLabelText == "not enough space in assigned space":
-    print("Try to stage in receiving or coordinate with management")
-else:
-    print("Order is staged in ", uLabelText)
-    
 # Starts the GUI
 app.mainloop()
 
