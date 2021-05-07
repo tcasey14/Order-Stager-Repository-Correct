@@ -37,7 +37,7 @@ def stage_product():
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
     if 150 < fe:
         resLabelText.set("Stage product at Back Wall (X1-001-100)")
-    if us == "Quit":
+    if us == "quit":
         resLabelText.set("Not a valid location, please enter the merchandise's measurements again")
     if us == "Too Big":
         resLabelText.set("Please stage somewhere on Back Wall")
@@ -45,7 +45,7 @@ def stage_product():
         resLabelText.set("Please stage somewhere at Service or Pro Desk")
     if us == "not enough space in assigned space":
         resLabelText.set("Try to stage in receiving or coordinate with management")
-    return
+    return  
 # Sets size and title
 app.geometry("350x200+100+100")
 app.title("Home Depot Online Order Stager")
@@ -81,8 +81,7 @@ button = Button(app, text="Stage Product", command=stage_product)
 button.pack(padx=15, pady=15)
 bmiLabelText = StringVar()
 bmiLabelText.set("Stage product in: ")
-bmiLabel = Label(app, textvariable=bmiLabelText)
-bmiLabel.pack()
+
 
 bmi = Entry(app, textvariable=b)
 bmi.pack()
@@ -91,6 +90,18 @@ resLabelText.set("Stage the merchandise in:")
 resLabel = Label(app, textvariable=resLabelText)
 resLabel.pack()
 
+button = Button(app, text="Final Stage", command=stage_product)
+button.pack(padx=15, pady=15)
+bmiLabelText = StringVar()
+bmiLabelText.set("Product is staged in:")
+bmiLabelText
+bmiLabel = Label(app, textvariable=bmiLabelText)
+bmiLabel.pack()
+user = Entry(app, textvariable=us)
+user.pack()
+
+
 # Starts the GUI
 app.mainloop()
+
 
